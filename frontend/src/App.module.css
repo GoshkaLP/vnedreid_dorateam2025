@@ -1,0 +1,37 @@
+.root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.dorateam {
+	width: 256px;
+	background-image: url('./assets/dorateam.svg');
+  background-position: center;
+	background-size: contain;
+	will-change: filter;
+	transition: width .4s ease-in, filter .4s ease-in;
+	aspect-ratio: 1/1;
+}
+
+.dorateam:hover {
+	width: 280px;
+	filter: drop-shadow(0 0 2em #ffffff);
+}
+
+@keyframes logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.dorateam {
+		animation: logo-spin infinite 20s linear;
+	}
+}
