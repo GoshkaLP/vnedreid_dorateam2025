@@ -1,8 +1,11 @@
+from typing import Any
+
 from passlib.context import CryptContext
 
 from api.clients.orionsoftgpt import orionsoftgpt_client
 from api.orm import models
 from api.repo.vacancies import VacanciesRepo
+from api.services import exceptions as exc
 from api.services.base import BaseService
 from api.services.schemas import vacancies as schemas
 
@@ -69,5 +72,11 @@ class VacanciesService(BaseService[models.Vacancies, schemas.Vacancies, Vacancie
         return [schemas.VacancyRegion(region=row) for row in data]
 
     def get_genders(self) -> list[schemas.VacancyGender]:
-        data = self.repo(self.session).get_specializations()
+        data = self.repo(self.session).get_genders()
         return [schemas.VacancyGender(gender=row) for row in data]
+
+    def add_region(self) -> Any:
+        raise exc.NotFoundError(detail="Not found")
+
+    def add_specialization(self) -> Any:
+        raise exc.NotFoundError(detail="Not found")
