@@ -21,12 +21,12 @@ export const useSalaryBins = ({query} : {query?: string}) => {
   }, [query])
 
   const salaryBins = {
-    title: 'Зарплаты по месяцам',
+    title: 'Распределение зарплат',
     data: {
 		labels: data?.map((bin) => bin.salary_range) ?? [],
 		datasets: [
 			{
-				label: 'Зарплаты по месяцам',
+				label: 'Количество вакансий',
 				data: data?.map((bin) => bin.count) ?? [],
 				backgroundColor: 'rgba(16, 155, 71, 0.3)',
 				borderColor: '#109B47',

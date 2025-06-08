@@ -15,18 +15,8 @@ export const BarChart: FC<BarChartProps> = ({ data }) => {
 		maintainAspectRatio: false,
 		plugins: {
 			legend: {
-				position: 'top',
-				labels: {
-					font: { size: 12 },
-				},
-			},
-			title: {
-				display: true,
-				text: 'Bar Chart',
-				font: {
-					size: 16,
-				},
-			},
+				display: false
+			}
 		},
 		scales: {
 			y: {
@@ -36,13 +26,13 @@ export const BarChart: FC<BarChartProps> = ({ data }) => {
 				},
 				title: {
 					display: true,
-					text: 'Значения',
+					text: 'Количество вакансий',
 				},
 			},
 			x: {
 				title: {
 					display: true,
-					text: 'Категории',
+					text: 'Диапазоны зарплат (руб.)',
 				},
 			},
 		},

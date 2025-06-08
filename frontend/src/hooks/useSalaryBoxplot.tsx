@@ -26,11 +26,11 @@ export const useSalaryBoxplot = ({query} : {query?: string}) => {
 	}, [query])
 
 	const salaryBoxplot = {
-		title: 'Распределение заработных плат по вакансии',
+		title: 'Детальные метрики распределения зарпалат',
 		data: {
 			labels: Array(''),
 			datasets: Array({
-				label: 'Зарплаты',
+				label: '',
 				data: data
 					? [
 							{

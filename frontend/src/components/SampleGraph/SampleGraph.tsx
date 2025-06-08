@@ -15,43 +15,8 @@ export const SampleGraph: FC<SampleGraphProps> = ({ data }) => {
 		maintainAspectRatio: false,
 		plugins: {
 			legend: {
-				position: 'top',
-				labels: {
-					font: { size: 12 },
-				},
-			},
-			title: {
-				display: true,
-				text: 'Boxplot Chart',
-				font: {
-					size: 16,
-				},
-			},
-			// annotation: {
-			// 	annotations: {
-			// 		targetLine: {
-			// 			type: 'line',
-			// 			yMin: 3.5,
-			// 			yMax: 3.5,
-			// 			borderColor: '#e74c3c',
-			// 			borderWidth: 2,
-			// 			borderDash: [6, 4],
-			// 			label: {
-			// 				display: true,
-			// 				content: 'Целевая линия: 3.5',
-			// 				color: '#007aff',
-			// 				font: {
-			// 					size: 12,
-			// 					weight: 'bold',
-			// 				},
-			// 				backgroundColor: 'rgba(0, 122, 255, 0.1)',
-			// 				position: 'start',
-			// 				yAdjust: -10,
-			// 				padding: 4,
-			// 			},
-			// 		},
-			// 	},
-			// },
+				display: false
+			}
 		},
 		scales: {
 			y: {

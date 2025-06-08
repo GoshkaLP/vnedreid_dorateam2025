@@ -8,9 +8,14 @@ import ReactMarkdown from 'react-markdown'
 import { GraphBox } from '../../../../components/GraphBox/GraphBox'
 import { SampleGraph } from '../../../../components/SampleGraph/SampleGraph'
 import { BarChart } from '../../../../components/BarChart/BarChart'
+import { Radar } from '../../../../components/Radar/Radar'
 
 type ReportProps = {
 	vacancyCounter: {
+		title: string
+		value: number
+	}
+	resumeCounter: {
 		title: string
 		value: number
 	}
@@ -47,13 +52,28 @@ type ReportProps = {
 			}[]
 		}
 	}
+	radar: {
+		title: string
+		data: {
+			labels: string[]
+			datasets: {
+				label: string
+				data: number[]
+				backgroundColor?: string
+				borderColor?: string
+				pointBackgroundColor?: string
+			}[]
+		}
+	}
 }
 
 export const Report: FC<ReportProps> = ({
 	vacancyCounter,
+	resumeCounter,
 	summaryLLM,
 	salaryBoxplot,
 	salaryBins,
+	radar,
 }) => {
 	const [page, setPage] = useState<'main' | 'map'>('main')
 
@@ -80,7 +100,7 @@ export const Report: FC<ReportProps> = ({
 						)}
 						onClick={() => setPage('map')}
 					>
-						{'Карта'}
+						{'Бенефиты'}
 					</p>
 				</div>
 			</div>
@@ -92,21 +112,32 @@ export const Report: FC<ReportProps> = ({
 							title={vacancyCounter.title}
 							value={vacancyCounter.value}
 						/>
-						<Counter title={'-'} value={0} />
+
+						<Counter title={resumeCounter.title} value={resumeCounter.value} />
 					</div>
 
-					<ReactMarkdown>{summaryLLM.response}</ReactMarkdown>
+					{page === 'main' && (
+						<ReactMarkdown>{summaryLLM.response}</ReactMarkdown>
+					)}
 				</div>
 
-				<GraphBox title={salaryBins.title} hint={'Подробнее'}>
-					<BarChart data={salaryBins.data} />
-				</GraphBox>
+				{page === 'main' && (
+					<GraphBox title={salaryBins.title} hint={'Подробнее'}>
+						<BarChart data={salaryBins.data} />
+					</GraphBox>
+				)}
 
-				<GraphBox title={salaryBoxplot.title} hint={'Подробнее'}>
-					<SampleGraph
-						data={salaryBoxplot.data}
-					/>
-				</GraphBox>
+				{page === 'main' && (
+					<GraphBox title={salaryBoxplot.title} hint={'Подробнее'}>
+						<SampleGraph data={salaryBoxplot.data} />
+					</GraphBox>
+				)}
+
+				{page === 'map' && (
+					<GraphBox title={'Статистика бенефитов'} hint={'Подробнее'}>
+						<Radar data={radar.data} />
+					</GraphBox>
+				)}
 			</div>
 		</Card>
 	)
