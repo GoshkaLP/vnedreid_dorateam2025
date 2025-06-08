@@ -52,6 +52,8 @@ class OpenrouterSettings(BaseSettings):
 class OrionSoftGPTSettings(BaseSettings):
     token: str
     username: str
+    url: str
+    salt: str
 
     model_config = get_model_config("orionsoftgpt_")
 

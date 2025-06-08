@@ -43,3 +43,23 @@ def get_genders():
     with get_session() as session:
         result = VacanciesService(session).get_genders()
         return [api_schemas.VacancyGender.from_service_schema(row) for row in result]
+
+
+@router.post(
+    "/regions",
+    status_code=status.HTTP_200_OK,
+    summary="Add new region",
+)
+def add_region():
+    with get_session() as session:
+        return VacanciesService(session).add_region()
+
+
+@router.post(
+    "/specializations",
+    status_code=status.HTTP_200_OK,
+    summary="Add new specialization",
+)
+def add_specialization():
+    with get_session() as session:
+        return VacanciesService(session).add_specialization()
