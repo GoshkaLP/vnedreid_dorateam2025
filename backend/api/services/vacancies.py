@@ -1,6 +1,6 @@
 from passlib.context import CryptContext
 
-from api.clients.openrouterai import openrouter_client
+from api.clients.orionsoftgpt import orionsoftgpt_client
 from api.orm import models
 from api.repo.vacancies import VacanciesRepo
 from api.services.base import BaseService
@@ -14,7 +14,6 @@ class VacanciesService(BaseService[models.Vacancies, schemas.Vacancies, Vacancie
     service_schema = schemas.Vacancies
     repo = VacanciesRepo
 
-    # TODO add payload for filters
     def get_salary_stats_by_specialization(
         self, filters: schemas.VacancyFilters
     ) -> schemas.VacancySalaryStats:
@@ -41,7 +40,7 @@ class VacanciesService(BaseService[models.Vacancies, schemas.Vacancies, Vacancie
         self, filters: schemas.VacancyFilters
     ) -> schemas.VacanciesSummaryLLM:
         stats = self.get_salary_stats_by_specialization(filters=filters)
-        llm_response = openrouter_client.get_summary_salary_stats(salary_stats=stats)
+        llm_response = orionsoftgpt_client.get_summary_salary_stats(salary_stats=stats)
         return schemas.VacanciesSummaryLLM(response=llm_response)
 
     def get_salary_bins(

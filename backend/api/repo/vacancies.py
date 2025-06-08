@@ -30,7 +30,6 @@ class VacanciesRepo(BaseRepo[models.Vacancies]):
             stmt = stmt.where(self.model.age <= filters.age_lte)
         return stmt
 
-    # TODO add filters to all methods
     def get_salary_stats_by_specialization(
         self, filters: schemas.VacancyFilters
     ) -> tuple[Any]:

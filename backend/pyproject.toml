@@ -16,6 +16,7 @@ psycopg2-binary = "^2.9.10"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 openai = "^1.84.0"
 ruff = "^0.11.13"
+requests = "^2.32.3"
 
 
 [build-system]
@@ -36,4 +37,4 @@ indent-style = "space"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
-ignore = ["E501", "E711", "E712"]
+ignore = ["E501", "E711", "E712", "E722"]
