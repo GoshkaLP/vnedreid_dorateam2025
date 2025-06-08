@@ -14,10 +14,26 @@ pydantic-settings = "^2.9.1"
 sqlalchemy = "^2.0.41"
 psycopg2-binary = "^2.9.10"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
-black = "^25.1.0"
 openai = "^1.84.0"
+ruff = "^0.11.13"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+exclude = ["alembic", "__pycache__", "psql_data"]
+fix = true
+show-fixes = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501", "E711", "E712"]

@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 import uuid
+
+from pydantic import BaseModel
+
 from api import choices
 
 

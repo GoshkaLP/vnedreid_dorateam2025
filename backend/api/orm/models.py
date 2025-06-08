@@ -1,6 +1,4 @@
-from sqlalchemy import Column, Text, ForeignKey, Boolean, Integer, Date, Float
-from sqlalchemy.dialects.postgresql import UUID, NUMERIC
-from sqlalchemy.orm import relationship
+from sqlalchemy import Boolean, Column, Date, Float, Integer, Text
 
 from api.orm.base import Base
 

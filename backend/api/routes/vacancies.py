@@ -1,13 +1,10 @@
 from typing import Annotated
-from api.utils.token_validator import TokenValidator
-from api.utils.dto import TokenData
-from fastapi import APIRouter, status, Security, Depends
-import uuid
+
+from fastapi import APIRouter, Query, status
+
 from api.orm.session import get_session
-from api.services.vacancies import VacanciesService
 from api.routes.schemas import vacancies as api_schemas
-from api.utils.token_validator import TokenValidator
-from api import choices
+from api.services.vacancies import VacanciesService
 
 router = APIRouter(prefix="/api/vacancies", tags=["vacancies"])
 
@@ -18,9 +15,13 @@ router = APIRouter(prefix="/api/vacancies", tags=["vacancies"])
     status_code=status.HTTP_200_OK,
     summary="Get information of vacancy salary stats with filters",
 )
-def get_salary_stats_by_specialization():
+def get_salary_stats_by_specialization(
+    filters: Annotated[api_schemas.VacancyFilters, Query()],
+):
     with get_session() as session:
-        result = VacanciesService(session).get_salary_stats_by_specialization()
+        result = VacanciesService(session).get_salary_stats_by_specialization(
+            filters=filters
+        )
         return api_schemas.VacancySalaryStats.from_service_schema(result)
 
 
@@ -30,9 +31,9 @@ def get_salary_stats_by_specialization():
     status_code=status.HTTP_200_OK,
     summary="Get vacancies count with filters",
 )
-def get_count_vacancies():
+def get_count_vacancies(filters: Annotated[api_schemas.VacancyFilters, Query()]):
     with get_session() as session:
-        result = VacanciesService(session).get_count_vacancies()
+        result = VacanciesService(session).get_count_vacancies(filters=filters)
         return api_schemas.VacanciesCount.from_service_schema(result)
 
 
@@ -42,9 +43,9 @@ def get_count_vacancies():
     status_code=status.HTTP_200_OK,
     summary="Vacancies summary by LLM model with filters",
 )
-def get_vacancies_summary():
+def get_vacancies_summary(filters: Annotated[api_schemas.VacancyFilters, Query()]):
     with get_session() as session:
-        result = VacanciesService(session).get_vacancies_summary_llm()
+        result = VacanciesService(session).get_vacancies_summary_llm(filters=filters)
         return api_schemas.VacanciesSummaryLLM.from_service_schema(result)
 
 
@@ -54,9 +55,9 @@ def get_vacancies_summary():
     status_code=status.HTTP_200_OK,
     summary="Get salary bins with filters",
 )
-def get_salary_bins():
+def get_salary_bins(filters: Annotated[api_schemas.VacancyFilters, Query()]):
     with get_session() as session:
-        result = VacanciesService(session).get_salary_bins()
+        result = VacanciesService(session).get_salary_bins(filters=filters)
         return [
             api_schemas.VacanciesSalaryBins.from_service_schema(row) for row in result
         ]

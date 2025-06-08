@@ -1,10 +1,11 @@
 from fastapi import Depends
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from api.utils.jwt_tool import jwt_tool
-from api.utils.dto import TokenData
-from api.utils import exceptions as utils_exc
-from api.services import exceptions as service_exc
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+
 from api import choices
+from api.services import exceptions as service_exc
+from api.utils import exceptions as utils_exc
+from api.utils.dto import TokenData
+from api.utils.jwt_tool import jwt_tool
 
 security = HTTPBearer()
 

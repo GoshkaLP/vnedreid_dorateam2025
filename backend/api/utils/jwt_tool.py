@@ -1,8 +1,9 @@
 import jwt
+from pydantic import ValidationError
+
 from api.settings import jwt_settings
 from api.utils.dto import TokenData
 from api.utils.exceptions import JWTToolError
-from pydantic import ValidationError
 
 
 class JWTTool:

@@ -1,4 +1,4 @@
-from typing import Type, TypeVar, Any
+from typing import Any, TypeVar
 
 ModelType = TypeVar("ModelType")
 
@@ -13,7 +13,7 @@ class FilterParser:
         "nin": lambda attr, value: attr.not_in(value),
     }
 
-    def __init__(self, orm_model: Type[ModelType]):
+    def __init__(self, orm_model: type[ModelType]):
         self.orm_model = orm_model
 
     def parse_filter(self, expression: str, value: Any):
