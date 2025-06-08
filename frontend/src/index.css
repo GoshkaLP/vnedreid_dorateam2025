@@ -1,3 +1,6 @@
-:root {
-	background-color: #007aff;
+@import url('../src/normalize.css');
+@import url('../src/fonts.css');
+
+body {
+  color: #233527;
 }

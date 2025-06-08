@@ -1,0 +1,21 @@
+.root {
+	margin: 40px auto;
+	width: calc(100% - 260px);
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 20px;
+	position: relative;
+}
+
+.dorateam {
+	position: fixed;
+	right: 30px;
+	bottom: 30px;
+	width: 50px;
+	height: 50px;
+	background-image: url('../../assets/dorateam-green.svg');
+}
+
+.right {
+	overflow-y: scroll;
+}

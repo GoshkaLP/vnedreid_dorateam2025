@@ -12,7 +12,9 @@
     "lint": "eslint --fix",
     "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\" --ignore-path ./.prettierignore",
     "check": "npm run stylelint:fix && npm run lint && npm run format",
-    "prepare": "husky"
+    "prepare": "husky",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "lint-staged": {
     "*.{css,scss}": "npm run stylelint:fix",
@@ -20,12 +22,23 @@
     "*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format"
   },
   "dependencies": {
+    "@sgratzl/chartjs-chart-boxplot": "^4.4.4",
+    "chart.js": "^4.4.9",
+    "chartjs-chart-box-and-violin-plot": "^4.0.0",
+    "chartjs-plugin-annotation": "^3.1.0",
     "classnames": "^2.5.1",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^19.1.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@storybook/addon-onboarding": "^9.0.6",
+    "@storybook/react": "^9.0.6",
+    "@storybook/react-vite": "^9.0.6",
+    "@types/chart.js": "^2.9.41",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@typescript-eslint/eslint-plugin": "^8.33.1",
@@ -40,10 +53,12 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "eslint-plugin-storybook": "^9.0.6",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.0",
     "prettier": "^3.5.3",
+    "storybook": "^9.0.6",
     "stylelint": "^16.20.0",
     "stylelint-config-standard": "^38.0.0",
     "stylelint-order": "^7.0.0",

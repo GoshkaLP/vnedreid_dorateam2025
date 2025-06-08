@@ -1,0 +1,13 @@
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0;
+  padding: 15px 0;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
