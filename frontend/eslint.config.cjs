@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 module.exports = {
   files: ["./src/**/*.{js,jsx,ts,tsx,json}"],
   parser: "@typescript-eslint/parser",

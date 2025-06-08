@@ -3,16 +3,18 @@
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+  background-color: #109B47;
 }
 
 .dorateam {
 	width: 256px;
-	background-image: url('./assets/dorateam.svg');
+	background-image: url('../../assets/dorateam.svg');
   background-position: center;
 	background-size: contain;
 	will-change: filter;
 	transition: width .4s ease-in, filter .4s ease-in;
 	aspect-ratio: 1/1;
+	cursor: pointer;
 }
 
 .dorateam:hover {

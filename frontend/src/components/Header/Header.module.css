@@ -1,0 +1,21 @@
+.root {
+  padding: 0 120px;
+  background: white;
+  box-shadow: 0 4px 25px 0 #0000001A;
+  border-radius: 0 0 40px 40px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.logo {
+  width: 144px;
+  height: 40px;
+	background-image: url('../../assets/cdek.svg');
+  background-position: center;
+	background-size: contain;
+	will-change: filter;
+}

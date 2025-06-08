@@ -1,0 +1,33 @@
+.root {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+  background-color: #F9F7F7;
+  border-radius: 25px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.divider {
+  height: 2px;
+  width: 26px;
+  background-color: #B9B9B9;
+  border-radius: 1px;
+}
+
+.value {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 40px;
+  margin: 0;
+  padding: 0;
+}
