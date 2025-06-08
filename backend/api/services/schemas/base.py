@@ -1,6 +1,7 @@
-from pydantic import BaseModel, ConfigDict
-import uuid
 import datetime
+import uuid
+
+from pydantic import BaseModel, ConfigDict
 
 
 class BaseServiceSchema(BaseModel):

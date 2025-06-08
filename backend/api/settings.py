@@ -49,7 +49,15 @@ class OpenrouterSettings(BaseSettings):
     model_config = get_model_config("openrouter_")
 
 
+class OrionSoftGPTSettings(BaseSettings):
+    token: str
+    username: str
+
+    model_config = get_model_config("orionsoftgpt_")
+
+
 app_settings = AppSettings()
 postgres_settings = PostgresSettings()
 jwt_settings = JWTSettings()
 openrouter_settings = OpenrouterSettings()
+orionsoftgpt_settings = OrionSoftGPTSettings()

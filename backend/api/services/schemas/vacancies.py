@@ -1,10 +1,11 @@
-from datetime import date
+from datetime import date, datetime
+
+from pydantic import BaseModel
 
 from api.services.schemas.base import (
     BaseServiceSchema,
     IdCreatedDeletedServiceSchemaMixin,
 )
-import uuid
 
 
 class Vacancies(BaseServiceSchema, IdCreatedDeletedServiceSchemaMixin):
@@ -40,3 +41,25 @@ class VacanciesSummaryLLM(BaseServiceSchema):
 class VacanciesSalaryBins(BaseServiceSchema):
     salary_range: str
     count: int
+
+
+class VacancySpecialization(BaseServiceSchema):
+    specialization: str
+
+
+class VacancyRegion(BaseServiceSchema):
+    region: str
+
+
+class VacancyGender(BaseServiceSchema):
+    gender: str
+
+
+class VacancyFilters(BaseModel):
+    publication_date_gte: datetime | None
+    publication_date_lte: datetime | None
+    age_gte: int | None
+    age_lte: int | None
+    region: list[str] | None
+    specialization: list[str] | None
+    gender: list[str] | None

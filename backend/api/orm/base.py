@@ -1,8 +1,10 @@
-from sqlalchemy import MetaData, Column, DateTime, Boolean, create_engine
-from sqlalchemy.orm import as_declarative, declared_attr, sessionmaker
-from sqlalchemy.dialects.postgresql import UUID
 from datetime import datetime
 from uuid import uuid4
+
+from sqlalchemy import Boolean, Column, DateTime, MetaData, create_engine
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import as_declarative, declared_attr, sessionmaker
+
 from api.settings import postgres_settings
 from api.utils.strings import to_snake_case
 

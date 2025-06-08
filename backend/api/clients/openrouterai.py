@@ -1,7 +1,7 @@
 from openai import OpenAI
 
-from api.settings import openrouter_settings
 from api.services.schemas import vacancies as schemas
+from api.settings import openrouter_settings
 
 
 class OpenrouterClient:

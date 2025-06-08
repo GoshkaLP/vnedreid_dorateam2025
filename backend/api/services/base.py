@@ -1,8 +1,10 @@
-from typing import TypeVar, Generic, Type
+from typing import Generic, TypeVar
+
 from pydantic import BaseModel
-from api.repo.base import BaseRepo
 from sqlalchemy.orm import Session
+
 from api.repo import exceptions as repo_exc
+from api.repo.base import BaseRepo
 from api.services import exceptions as service_exc
 
 ModelType = TypeVar("ModelType")
@@ -11,9 +13,9 @@ Repo = TypeVar("Repo", bound=BaseRepo)
 
 
 class BaseService(Generic[ModelType, ServiceSchema, Repo]):
-    model: Type[ModelType]
-    service_schema: Type[ServiceSchema]
-    repo: Type[Repo]
+    model: type[ModelType]
+    service_schema: type[ServiceSchema]
+    repo: type[Repo]
 
     def __init__(self, session: Session):
         self.session = session
