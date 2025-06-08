@@ -1,3 +1,5 @@
+
+import html2pdf from 'html2pdf.js'
 import styles from './Dashboard.module.css'
 import { Report } from './components/Report/Report'
 import { Card } from '../../components/Card/Card'
@@ -11,8 +13,24 @@ import { useSalaryBins } from '../../hooks/useSalaryBins'
 import { useMemo, useState } from 'react'
 import { useRegions } from '../../hooks/filterLabels/useRegions'
 import { useGenders } from '../../hooks/filterLabels/useGenders'
+import { useRadar } from '../../hooks/useRadar'
+import { useResumeCounter } from '../../hooks/useResumeCounter'
 
 const Dashboard = () => {
+	document.getElementById('downloadBtn')?.addEventListener('click', () => {
+		const element = document.body
+		const opt = {
+			margin: 0.5,
+			filename: 'страница.pdf',
+			image: { type: 'jpeg', quality: 0.98 },
+			html2canvas: { scale: 2 },
+			jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' },
+		}
+		html2pdf().set(opt).from(element).save()
+	})
+
+	const [reloader, setReloader] = useState<boolean>()
+
 	const { specializations } = useSpecializations()
 	const { regions } = useRegions()
 	const { genders } = useGenders()
@@ -46,12 +64,15 @@ const Dashboard = () => {
 		})
 
 		return params.toString()
-	}, [filters])
+	}, [reloader])
 
 	const { vacancyCounter } = useVacancyCounter({ query })
+	const { resumeCounter } = useResumeCounter({ query })
 	const { summaryLLM } = useSummaryLLM({ query })
 	const { salaryBoxplot } = useSalaryBoxplot({ query })
 	const { salaryBins } = useSalaryBins({ query })
+	const { radar } = useRadar({ query })
+
 	return (
 		<>
 			<Header />
@@ -59,12 +80,16 @@ const Dashboard = () => {
 			<div className={styles.root}>
 				<Report
 					vacancyCounter={vacancyCounter}
+					resumeCounter={resumeCounter}
 					summaryLLM={summaryLLM}
 					salaryBoxplot={salaryBoxplot}
 					salaryBins={salaryBins}
+					radar={radar}
 				/>
 
-				<Card className={styles.right}>
+				<Card className={styles.filtersCard}>
+					<h2 className={styles.filtersTitle}>{'Фильтры'}</h2>
+
 					<FilterGroup title={'Специализация'}>
 						{specializations.map((item) => (
 							<Filter
@@ -94,6 +119,23 @@ const Dashboard = () => {
 							/>
 						))}
 					</FilterGroup>
+
+					<div className={styles.buttons}>
+						<button
+							onClick={() => setReloader(!reloader)}
+							className={styles.filtersButton}
+						>
+							{'Обновить'}
+						</button>
+
+						<button
+							id='downloadBtn'
+							onClick={() => {}}
+							className={styles.downloadButton}
+						>
+							{'Скачать в pdf'}
+						</button>
+					</div>
 				</Card>
 			</div>
 
