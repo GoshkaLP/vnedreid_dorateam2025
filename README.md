@@ -10,6 +10,9 @@
 [Ссылка](http://10.10.162.1/dashboard)
 ![image](imgs/main.png)
 
+### Архитектура решения
+![image](imgs/architecture.png)
+
 ### Документация API
 [Cсылка](http://10.10.162.1:8080/docs#/)
 
